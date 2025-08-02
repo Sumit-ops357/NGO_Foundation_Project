@@ -1,0 +1,208 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(255, 107, 53, 0.1);
+  z-index: 1000;
+  border-bottom: 2px solid var(--primary-orange);
+  transition: all var(--transition-normal);
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 8px 40px rgba(255, 107, 53, 0.15);
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.navbar-brand {
+  text-decoration: none;
+  color: var(--text-dark);
+  transition: all var(--transition-normal);
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.logo-image {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 3px solid var(--primary-orange);
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+  transition: all var(--transition-normal);
+}
+
+.logo-image:hover {
+  transform: rotate(5deg) scale(1.1);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+}
+
+.logo-text {
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: var(--bg-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.logo-text::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-yellow);
+  transition: width var(--transition-normal);
+}
+
+.logo:hover .logo-text::after {
+  width: 100%;
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-gradient);
+  transition: left var(--transition-normal);
+  z-index: -1;
+}
+
+.navbar-link:hover::before,
+.navbar-link.active::before {
+  left: 0;
+}
+
+.navbar-link:hover,
+.navbar-link.active {
+  color: var(--text-white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.navbar-toggle:hover {
+  background: var(--accent-yellow);
+}
+
+.hamburger {
+  width: 28px;
+  height: 3px;
+  background: var(--primary-orange);
+  margin: 4px 0;
+  transition: all var(--transition-normal);
+  border-radius: 2px;
+  position: relative;
+}
+
+.hamburger.active:nth-child(1) {
+  transform: rotate(-45deg) translate(-6px, 7px);
+  background: var(--primary-yellow);
+}
+
+.hamburger.active:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.hamburger.active:nth-child(3) {
+  transform: rotate(45deg) translate(-6px, -7px);
+  background: var(--primary-yellow);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: flex;
+  }
+
+  .navbar-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 8px 40px rgba(255, 107, 53, 0.15);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+    border-top: 2px solid var(--primary-yellow);
+  }
+
+  .navbar-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navbar-link {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    margin: 5px 0;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .logo-text {
+    font-size: 1.3rem;
+  }
+  
+  .logo-image {
+    width: 40px;
+    height: 40px;
+  }
+} 
